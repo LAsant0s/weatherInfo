@@ -1,5 +1,68 @@
-table, td, tr {
+body {
+  background-color: #8fc8ec;
+  margin: 0;
+}
+
+.banner {
+  background-color: blue;
+  padding: 100px;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 5px auto 20px auto;
+  width: 12rem;
+  height: 4rem;
+}
+.inputContainer button {
+  width: fit-content;
+  align-self: flex-end;
+}
+
+.inputContainer input[type=text] {
+  outline: none;
+}
+
+table, td, th, tr, td {
   border: 1px solid black;
   border-collapse: collapse;
-  padding: 10px;
+  padding: 5px;
+  border-color: white;
+  text-align: left;
+}
+
+header, section {
+  margin: 8px;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+}
+
+.weatherIcon {
+  width: 200px;
+  height: 250px;
+  border: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 8px;
+  margin-left: 50px;
+}
+
+.iconContainer {
+  margin-top: 30%;
+}
+
+.weatherIcon i {
+   font-size: 100px;
+}
+
+hr {
+  border: 1px solid #93a1a8;
+  margin-bottom: 15px;
 }

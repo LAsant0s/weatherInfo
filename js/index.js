@@ -1,16 +1,27 @@
 $(document).ready( async () => {
+  const icons = {
+    'clear-night': ['wi-night-clear', 'Noite Clara'],
+    'cloudy': ['wi-cloudy', 'Nublado'],
+    'fog': ['wi-smoke', 'Neblina'],
+    'partly-cloudy-day': ['wi-day-cloudy', 'Parcialmente Nublado'],
+    'partly-cloudy-night': ['wi-night-alt-cloudy', 'Parcialmente Nublado'],
+    'rain': ['wi-raindrop', 'Chuvoso'],
+    'sleet': ['wi-sleet', 'Granizo'],
+    'snow': ['wi-snow', 'Nevando'],
+    'wind': ['wi-windy', 'Ventoso']
+  }
+
   let response = await axios.get("https://api.darksky.net/forecast/8eeafa93fa171bb970bfac9b03caa3a3/-18.9127749,-48.2755227?exclude=minutely,hourly,daily,flags,alerts")
   let data = response.data;
-  console.log(data)
-  
+
   let valores = [
     data.timezone.replace("_", " ").replace("/", ", "),
     data.latitude,
     data.longitude,
     `${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}`,
     data.currently.summary,
-    data.currently.precipIntensity,
-    data.currently.precipProbability,
+    `${data.currently.precipIntensity} milimetros por hora`,
+    `${data.currently.precipProbability*100}%`,
     data.currently.temperature,
     data.currently.apparentTemperature,
     data.currently.dewPoint,
@@ -50,6 +61,9 @@ $(document).ready( async () => {
   ]
 
   let tabela = $("#tabela");
+
+  $("#icon").addClass(icons[data.currently.icon][0]);
+  $("#weatherDescription").text(icons[data.currently.icon][1])
 
   colunas.forEach((coluna, index) => {
     let tr = $("<tr>");
